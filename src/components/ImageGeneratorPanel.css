@@ -1,0 +1,177 @@
+.tldraw-input-positioned {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(640px, calc(100vw - 3rem));
+  z-index: 9999;
+  font-family: var(--font-sans);
+  pointer-events: auto !important;
+}
+
+/* Override PlaceholdersAndVanishInput styles to match our design */
+.tldraw-input-positioned form {
+  background: var(--color-card) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-lg) !important;
+  height: 48px !important;
+  font-family: var(--font-sans) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+.tldraw-input-positioned input {
+  color: var(--color-foreground) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.95rem !important;
+}
+
+.tldraw-input-positioned button {
+  background: var(--color-primary) !important;
+}
+
+.tldraw-input-positioned button:hover:not(:disabled) {
+  background: var(--color-primary) !important;
+  opacity: 0.9 !important;
+}
+
+.tldraw-input-positioned button:disabled {
+  background: var(--color-primary) !important;
+  opacity: 0.5 !important;
+}
+
+/* Placeholder text styling */
+.tldraw-input-positioned p {
+  color: var(--color-muted-foreground) !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* Enhanced Input Container */
+.enhanced-input-container {
+  position: relative;
+}
+
+/* Attached Images as Overlay Chips */
+.attached-images-overlay {
+  position: absolute;
+  top: -40px;
+  left: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.attached-image-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) - 2px);
+  padding: 2px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  max-width: 120px;
+}
+
+.attached-image-chip:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.attached-image-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 3px);
+  overflow: hidden;
+  background: var(--color-muted);
+}
+
+.attached-image-mini {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 3px);
+}
+
+.attached-image-chip-remove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  font-family: var(--font-sans);
+  z-index: 101;
+}
+
+.attached-image-chip-remove:hover {
+  background: var(--color-destructive);
+  opacity: 0.9;
+  transform: scale(1.15);
+}
+
+/* Adjust input padding when images are attached - applied via JS */
+.enhanced-input-container.has-attached-images .tldraw-input-positioned input {
+  padding-bottom: 42px !important;
+}
+
+@media (max-width: 640px) {
+  .tldraw-input-positioned {
+    bottom: 1rem;
+    width: calc(100vw - 1.5rem);
+  }
+
+  .tldraw-input-positioned input {
+    font-size: 0.9rem !important;
+  }
+
+  .attached-images-overlay {
+    bottom: 6px;
+    left: 10px;
+    right: 50px;
+    gap: 4px;
+  }
+
+  .attached-image-chip {
+    max-width: 100px;
+  }
+
+  .attached-image-mini {
+    width: 24px;
+    height: 24px;
+  }
+
+  .attached-image-chip-remove {
+    width: 14px;
+    height: 14px;
+    top: -5px;
+    right: -5px;
+    font-size: 9px;
+  }
+
+  /* Adjust input padding for mobile - applied via JS */
+  .enhanced-input-container.has-attached-images .tldraw-input-positioned input {
+    padding-bottom: 38px !important;
+  }
+}

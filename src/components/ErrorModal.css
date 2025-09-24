@@ -1,0 +1,213 @@
+/* Error Modal Backdrop */
+.error-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001; /* Higher than API key modal */
+  padding: 1rem;
+}
+
+/* Error Modal Container */
+.error-modal {
+  background: var(--color-card);
+  border: 1px solid var(--color-destructive);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-2xl);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Error Modal Header */
+.error-modal-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-icon {
+  color: var(--color-destructive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+  flex-shrink: 0;
+}
+
+.error-modal-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+/* Error Modal Content */
+.error-modal-content {
+  padding: 1.5rem;
+}
+
+.error-message {
+  color: var(--color-foreground);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  font-family: var(--font-sans);
+}
+
+/* Error Details (collapsible) */
+.error-details {
+  margin-top: 1rem;
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+}
+
+.error-details summary {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-muted-foreground);
+  cursor: pointer;
+  background: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.error-details summary:hover {
+  background: var(--color-accent);
+  color: var(--color-foreground);
+}
+
+.error-details[open] summary {
+  border-bottom-color: var(--color-border);
+}
+
+.error-raw {
+  padding: 0.875rem;
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.4;
+}
+
+/* Error Modal Actions */
+.error-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.retry-button,
+.close-button {
+  padding: 0.5rem 1rem;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4rem;
+  height: 2.25rem;
+}
+
+.retry-button {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border-color: var(--color-primary);
+}
+
+.retry-button:hover {
+  background: var(--color-primary);
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.close-button {
+  background: transparent;
+  color: var(--color-muted-foreground);
+  border-color: var(--color-border);
+}
+
+.close-button:hover {
+  background: var(--color-muted);
+  color: var(--color-foreground);
+}
+
+.retry-button:active,
+.close-button:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .error-modal-backdrop {
+    padding: 0.5rem;
+  }
+  
+  .error-modal {
+    max-width: 100%;
+  }
+  
+  .error-modal-header {
+    padding: 1rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .error-modal-content {
+    padding: 1rem;
+  }
+  
+  .error-modal-actions {
+    padding: 0.75rem 1rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .retry-button,
+  .close-button {
+    width: 100%;
+  }
+  
+  .error-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .error-modal-header h2 {
+    font-size: 1.125rem;
+  }
+  
+  .error-message {
+    font-size: 0.9rem;
+  }
+}
